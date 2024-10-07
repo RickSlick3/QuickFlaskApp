@@ -66,7 +66,7 @@ def processProfile():
   global global_password
   conn = get_db()
   cur = conn.cursor()
-  cur.execute("""UPDATE userstable SET firstname = ?, lastname = ?, email = ? WHERE username = ?, password = ?""",[fname, lname, email, global_username, global_password])
+  cur.execute("""UPDATE userstable SET firstname = ?, lastname = ?, email = ? WHERE username = ? AND password = ?""",[fname, lname, email, global_username, global_password])
   conn.commit()
   conn.close()
   return redirect(url_for('displayProfile'))
